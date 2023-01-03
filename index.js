@@ -1,11 +1,12 @@
-const express = require('express')
-const app = express()
-const port = 3000
+const express = require("express");
+const app = express();
 
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
+const PORT = 3001;
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
-})
+const personsRoutes = require("./src/routes/persons");
+
+app.use("/api", personsRoutes);
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});

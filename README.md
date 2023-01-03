@@ -1,13 +1,13 @@
-# GitHub Codespaces ♥️ Express
+# Phonebook Backend
 
-Welcome to your shiny new Codespace running Express! We've got everything fired up and running for you to explore Express.
+App to hold the info of persons, specificaly the name and number of the person.
 
-You've got a blank canvas to work on from a git perspective as well. There's a single initial commit with the what you're seeing right now - where you go from here is up to you!
+## How to run
 
-Everything you do here is contained within this one codespace. There is no repository on GitHub yet. If and when you’re ready you can click "Publish Branch" and we’ll create your repository and push up your project. If you were just exploring then and have no further need for this code then you can simply delete your codespace and it's gone forever.
+You need to have node and npm installed, and then:
 
-To run this application:
+1. Run `npm install` in root folder of the project.
+2. To start the server run `npm start` or `npm  run dev` (to restart on change)
+3. That's all
 
-```
-npm start
-```
+_pdst. `npm test` is not avaible_
