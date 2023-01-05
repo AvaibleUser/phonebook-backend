@@ -6,6 +6,8 @@ const PORT = 3001;
 const personsRoutes = require("./src/routes/persons");
 const infoRoute = require("./src/routes/info");
 
+app.use(express.json());
+
 app.use("/api/persons", personsRoutes);
 app.use("/", infoRoute);
 
