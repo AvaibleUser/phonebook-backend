@@ -13,6 +13,7 @@ const morganFormat =
 
 morgan.token("body", ({ body }) => (body?.name ? JSON.stringify(body) : " "));
 
+app.use(express.static("static"))
 app.use(express.json());
 app.use(morgan(morganFormat));
 
