@@ -1,13 +1,26 @@
-# Phonebook Backend
+# Phonebook Backend (Semi Fullstack)
 
-App to hold the info of persons, specificaly the name and number of the person.
+CRUD for the name and number of persons.
 
-## How to run
+## How to run it
 
-You need to have node and npm installed, and then:
+### Pre requisites
 
-1. Run `npm install` in root folder of the project.
-2. To start the server run `npm start` or `npm  run dev` (to restart on change)
-3. That's all
+* Node and npm installed
+* Run almost one time 'npm install'
+* One port free (3001 as default)
 
-_pdst. `npm test` is not avaible_
+### Development mode
+
+* Run 'npm run dev'
+
+### Production mode
+
+* Run 'npm start'
+
+## Add frontend changes
+
+_You need to have, in the same folder, this and [frontend project](https://github.com/AvaibleUser/phonebook-frontend)._
+
+* Run 'npm run build:ui'
+

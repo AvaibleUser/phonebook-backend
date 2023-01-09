@@ -4,7 +4,7 @@
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js",
-    "build:ui": "rm -rf build && cd ../phonebook-frontend && npm run build && mv build ../phonebook-backend/static",
+    "build:ui": "rm -rf static && cd ../phonebook-frontend && npm run build && mv build ../phonebook-backend/static",
     "deploy": "...",
     "deploy:full": "npm run build:ui && npm run deploy",
     "logs:prod": "..."
