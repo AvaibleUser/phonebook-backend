@@ -6,6 +6,14 @@ const personSchema = new Schema({
   number: String,
 });
 
-const Person = model("Person", personSchema);
+personSchema.set('toJSON', {
+  transform: (_doc, prevPerson) => {
+    prevPerson.id = prevPerson._id.toString()
+    delete prevPerson._id
+    delete prevPerson.__v
+  }
+})
 
-export default Person;
+const personModel = model("Person", personSchema);
+
+export default personModel;

@@ -1,10 +1,9 @@
+import { getPhonebookSize } from "../controllers/person.js";
 import { Router } from "express";
-const router = Router();
+const infoRoute = Router();
 
-import persons from "../utils/personsData";
-
-router.get("/info", (req, res) => {
-  const amount = persons.length;
+infoRoute.get("/info", (req, res) => {
+  const amount = getPhonebookSize();
   const date = new Date();
 
   const personsInfo = `<p>Phonebook has info for ${amount} people</p> `;
@@ -13,4 +12,4 @@ router.get("/info", (req, res) => {
   res.send(personsInfo + dateInfo);
 });
 
-export default router;
+export default infoRoute;
