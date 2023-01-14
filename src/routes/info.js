@@ -1,7 +1,7 @@
-const express = require("express");
-const router = express.Router();
+import { Router } from "express";
+const router = Router();
 
-const persons = require("../utils/personsData");
+import persons from "../utils/personsData";
 
 router.get("/info", (req, res) => {
   const amount = persons.length;
@@ -13,4 +13,4 @@ router.get("/info", (req, res) => {
   res.send(personsInfo + dateInfo);
 });
 
-module.exports = router;
+export default router;

@@ -1,13 +1,13 @@
-const express = require("express");
-const morgan = require("morgan");
-const cors = require("cors");
+import express from "express";
+import morgan from "morgan";
+import cors from "cors";
 
 const app = express();
 
 const PORT = process.env.PORT || 3001;
 
-const personsRoutes = require("./src/routes/persons");
-const infoRoute = require("./src/routes/info");
+import personsRoutes from "./src/routes/persons";
+import infoRoute from "./src/routes/info";
 
 const morganFormat =
   ":method :url :status :res[content-length] - :response-time ms :body";

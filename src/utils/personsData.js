@@ -1,4 +1,4 @@
-let persons = [
+export default [
   {
     id: 1,
     name: "Arto Hellas",
@@ -20,5 +20,3 @@ let persons = [
     number: "39-23-6423122",
   },
 ];
-
-module.exports = persons;

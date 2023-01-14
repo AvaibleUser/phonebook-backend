@@ -1,7 +1,7 @@
-const express = require("express");
-const router = express.Router();
+import { Router } from "express";
+const router = Router();
 
-let persons = require("../utils/personsData");
+import persons from "../utils/personsData";
 
 const getNewPerson = ({ name, number }) => {
   if (!name || !number) {
@@ -49,4 +49,4 @@ router.post("/", (req, res) => {
   res.json(newPerson);
 });
 
-module.exports = router;
+export default router;
