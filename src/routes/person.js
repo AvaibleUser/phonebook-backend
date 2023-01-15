@@ -9,14 +9,19 @@ personRoutes.get("/", async (_req, res) => {
   res.json(person);
 });
 
-personRoutes.get("/:id", async (req, res) => {
-  const id = +req.params.id;
-  const person = await personController.getPerson(id);
+personRoutes.get("/:id", async (req, res, next) => {
+  const id = req.params.id;
 
-  if (person) {
-    res.json(person);
-  } else {
-    res.status(404).end();
+  try {
+    const person = await personController.getPerson(id);
+
+    if (person) {
+      res.json(person);
+    } else {
+      res.status(404).end();
+    }
+  } catch (error) {
+    next(error);
   }
 });
 
@@ -26,12 +31,12 @@ personRoutes.post("/", async (req, res) => {
   if (!newPerson) {
     return res.status(400).json({ error: "content missing" });
   }
-  
+
   res.json(newPerson);
 });
 
-personRoutes.delete("/:id", (req, res) => {
-  const id = +req.params.id;
+personRoutes.delete("/:id", async (req, res) => {
+  const id = req.params.id;
 
   phonebook.persons = phonebook.persons.filter((person) => person.id !== id);
   res.status(204).end();

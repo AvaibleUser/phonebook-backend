@@ -7,6 +7,7 @@ import morganFormat from "./src/utils/morganConfigs.js";
 
 import personRoutes from "./src/routes/person.js";
 import infoRoute from "./src/routes/info.js";
+import * as handler from "./src/utils/handlerMiddleware.js";
 
 const app = express();
 
@@ -19,6 +20,10 @@ app.use(morgan(morganFormat));
 // adding routes
 app.use("/api/persons", personRoutes);
 app.use("/", infoRoute);
+
+// adding middleware to catch errors
+app.use(handler.unknownEndpoint);
+app.use(handler.errorHandler);
 
 const PORT = process.env.PORT || 3001;
 
