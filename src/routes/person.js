@@ -1,7 +1,6 @@
 import { Router } from "express";
 const personRoutes = Router();
 
-import phonebook from "../utils/personsData.js";
 import personController from "../controllers/person.js";
 
 personRoutes.get("/", async (_req, res) => {
@@ -25,21 +24,35 @@ personRoutes.get("/:id", async (req, res, next) => {
   }
 });
 
-personRoutes.post("/", async (req, res) => {
-  const newPerson = await personController.addPerson(req.body);
-
-  if (!newPerson) {
-    return res.status(400).json({ error: "content missing" });
+personRoutes.post("/", async (req, res, next) => {
+  try {
+    const newPerson = await personController.addPerson(req.body);
+    res.json(newPerson);
+  } catch (error) {
+    next(error);
   }
-
-  res.json(newPerson);
 });
 
-personRoutes.delete("/:id", async (req, res) => {
+personRoutes.put("/:id", async (req, res, next) => {
   const id = req.params.id;
 
-  phonebook.persons = phonebook.persons.filter((person) => person.id !== id);
-  res.status(204).end();
+  try {
+    const updatedPerson = await personController.updatePerson(id, req.body);
+    res.json(updatedPerson);
+  } catch (error) {
+    next(error);
+  }
+});
+
+personRoutes.delete("/:id", async (req, res, next) => {
+  const id = req.params.id;
+
+  try {
+    await personController.removePerson(id);
+    res.status(204).end();
+  } catch (error) {
+    next(error);
+  }
 });
 
 export default personRoutes;

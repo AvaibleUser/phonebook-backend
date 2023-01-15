@@ -8,6 +8,9 @@ export const errorHandler = (error, _req, res, next) => {
   if (error.name === "CastError") {
     return res.status(400).send({ error: "malformatted id" });
   }
+  if (error.name === "ContentMissing") {
+    return res.status(400).json({ error: "content missing" });
+  }
 
   next(error);
 };
