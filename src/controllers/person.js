@@ -1,5 +1,6 @@
-import { ContentMissingError } from "../errors/routesErrors.js";
 import personModel from "../model/person.js";
+
+const updateConfig = { new: true, runValidators: true, context: "query" };
 
 export const getPhonebookSize = async () => {
   const size = await personModel.count({});
@@ -17,27 +18,18 @@ const getPerson = async (id) => {
 };
 
 const addPerson = async ({ name, number }) => {
-  if (!name || !number) {
-    throw new ContentMissingError("The name or the number are missed");
-  }
-
   const person = await personModel.create({ name, number });
   return person;
 };
 
 const updatePerson = async (id, { name, number }) => {
-  if (!name || !number) {
-    throw new ContentMissingError("The name or the number are missed");
-  }
-
   const newInfo = { name, number };
-  const updatedPerson = await personModel.findByIdAndUpdate(id, newInfo, {
-    new: true,
-  });
 
-  if (updatedPerson) {
-    throw new ContentMissingError("The name or the number are missed");
-  }
+  const updatedPerson = await personModel.findByIdAndUpdate(
+    id,
+    newInfo,
+    updateConfig
+  );
 
   return updatedPerson;
 };
