@@ -38,6 +38,11 @@ personRoutes.put("/:id", async (req, res, next) => {
 
   try {
     const updatedPerson = await personController.updatePerson(id, req.body);
+
+    if (!updatedPerson) {
+      res.status(404).end();
+      return;
+    }
     res.json(updatedPerson);
   } catch (error) {
     next(error);
